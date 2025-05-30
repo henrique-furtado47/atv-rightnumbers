@@ -16,11 +16,8 @@ const somErro = new Audio("src/audio/wrong.mp3");
 const somVitoria = new Audio("src/audio/victory.mp3");
 const somDerrota = new Audio("src/audio/gameover.wav");
 const somRestart = new Audio("src/audio/restart.mp3");
-const somVitoria2= new Audio("src/audio/vitoria2.mp3");
-const somJumpscare = new Audio("src/audio/jumpscare.mp3");
-const somAmbience = new Audio("src/audio/ambience.mp3");
 
-//console.log(tempoRestante);
+console.log(tempoRestante);
 
 botoes.forEach((botao) => {
   botao.addEventListener("mouseenter", () => {
@@ -29,13 +26,8 @@ botoes.forEach((botao) => {
   botao.addEventListener("click", () => {
     if (tempoRestante === 30) {
       inciarCronometro();
-      somAmbience.loop=true;
-      somAmbience.play();
     }
     const numeroClicado = parseInt(botao.textContent);
-    if (tempoRestante === 0) {
-      somAmbience.pause();
-    }
     if (acertos < 3 && tempoRestante > 0) {
       document.getElementById("interrogacao").innerText = numeroClicado;
     }
@@ -52,9 +44,7 @@ function verificarTentativa(numero) {
       mensagem.innerText = "Você acertou o número!";
       acertos++;
       if (acertos >= 3) {
-        somAmbience.pause();
-        //somVitoria.cloneNode().play();
-        somVitoria2.cloneNode().play();
+        somVitoria.cloneNode().play();
         mensagem.innerText = "Parabéns, você venceu!";
       } else {
         numeroSorteado = Math.floor(Math.random() * 10);
@@ -79,13 +69,11 @@ function inciarCronometro() {
     if (tempoRestante > 0 && acertos < 3) {
       tempoRestante--;
       atualizarTempo();
-      //console.log(velocidade);
+      console.log(velocidade);
     } else {
       if (acertos < 3) {
-        //somDerrota.play();
-        somJumpscare.cloneNode().play();
+        somDerrota.play();
         mensagem.innerText = "Você perdeu";
-        somAmbience.pause();
       } else {
         tempoRestante = tempoRestante;
       }

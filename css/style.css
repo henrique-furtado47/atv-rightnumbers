@@ -3,7 +3,7 @@
 /* Fonte pixelada */
 body {
   font-family: "Press Start 2P", cursive;
-  background-image: url(../src/image/pizzaria.webp);
+  background: radial-gradient(circle, #000000 60%, #1a1a1a 100%);
   color: #39ff14;
   margin: 0;
   padding: 0;
